@@ -1,9 +1,9 @@
-<div>Incrementors: {{ incrementorCount }}</div>
-<div>Incrementor Cost: {{ incrementorCost }}</div>
+<div>Autogenerator: {{ incrementorCount }}</div>
+<div>Autogenerator Cost: {{ incrementorCost }}</div>
 <button (click)="incrementorPurchase()">Purchase</button>
 <button (click)="sale()" *ngIf="false">Sell</button>
 <div *ngIf="incrementors.length > 0">
-  Incrementor Juice: {{ juice }}
+  Autogen Juice: {{ juice | number: '1.0-0'}}
   <div>
     <app-juice-management
       [value]="value"
