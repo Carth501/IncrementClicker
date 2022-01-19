@@ -1,3 +1,8 @@
-<div>{{ value$ | async }}</div>
+<div>{{ value | number: '1.0' }}</div>
 <button (click)="increment()">Increment</button>
-<button (click)="purchase()">Purchase</button>
+<app-incrementors
+  [value]="value"
+  (incrementorActivate)="increment()"
+  (purchase)="decrement($event)"
+  (incrementorSale)="increment($event)"
+></app-incrementors>

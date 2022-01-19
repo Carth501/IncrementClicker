@@ -1,8 +1,5 @@
 import { Component, OnInit } from '@angular/core';
 import { Store } from '@ngrx/store';
-import { Observable } from 'rxjs';
-import * as ValueActions from '../store/value.actions';
-import * as ValueSelectors from '../store/value.selectors';
 
 @Component({
   selector: 'app-value',
@@ -10,23 +7,26 @@ import * as ValueSelectors from '../store/value.selectors';
   styleUrls: ['./value.component.scss'],
 })
 export class ValueComponent implements OnInit {
-  value$: Observable<number>;
-
+  //value$: Observable<number>;
+  value: number;
   ngOnInit(): void {}
 
   constructor(private store: Store<{ value: number }>) {
-    this.value$ = this.store.select(ValueSelectors.selectValue);
+    this.value = 0;
+    //this.value$ = this.store.select(ValueSelectors.selectValue);
   }
 
-  increment() {
-    this.store.dispatch(ValueActions.increment());
+  increment(addition: number = 1) {
+    this.value += addition;
+    //this.store.dispatch(ValueActions.increment());
   }
 
-  purchase() {
-    this.store.dispatch(ValueActions.purchase({ cost: 25 }));
+  decrement(cost: number) {
+    this.value -= cost;
+    //this.store.dispatch(ValueActions.increment());
   }
 
-  reset() {
-    this.store.dispatch(ValueActions.reset());
-  }
+  // reset() {
+  //   this.store.dispatch(ValueActions.reset());
+  // }
 }

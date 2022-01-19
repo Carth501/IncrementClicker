@@ -1,0 +1,15 @@
+<div>Incrementors: {{ incrementorCount }}</div>
+<div>Incrementor Cost: {{ incrementorCost }}</div>
+<button (click)="incrementorPurchase()">Purchase</button>
+<button (click)="sale()" *ngIf="false">Sell</button>
+<div *ngIf="incrementors.length > 0">
+  Incrementor Juice: {{ juice }}
+  <div>
+    <app-juice-management
+      [value]="value"
+      [juice]="juice"
+      (addJuice)="addJuice($event)"
+      (makePurchase)="otherPurchase($event)"
+    ></app-juice-management>
+  </div>
+</div>
