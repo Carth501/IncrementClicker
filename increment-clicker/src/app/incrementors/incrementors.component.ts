@@ -11,7 +11,12 @@ export class IncrementorsComponent implements OnInit {
   incrementorCost: number;
   juice: number;
 
-  @Input() value: number = 0;
+  @Input() set newValue(value: number | null) {
+    if (value) {
+      this.value = value;
+    }
+  }
+  value = 0;
   @Output() purchase: EventEmitter<number>;
   @Output() incrementorActivate: EventEmitter<number>;
   @Output() incrementorSale: EventEmitter<number>;
@@ -23,7 +28,7 @@ export class IncrementorsComponent implements OnInit {
     this.incrementorSale = new EventEmitter();
   }
 
-  ngOnInit(): void {}
+  ngOnInit(): void { }
 
   incrementor(count: number = 1): void {
     this.incrementorActivate.emit(count);
@@ -46,9 +51,9 @@ export class IncrementorsComponent implements OnInit {
   incrementorPurchase(): void {
     if (this.value >= this.incrementorCost) {
       this.purchase.emit(this.incrementorCost);
-      // this.incrementorCost = Math.ceil(this.incrementorCost * 1.05);
+      //this.incrementorCost = Math.ceil(this.incrementorCost * 1.05);
       this.incrementorCount++;
-      if(this.incrementorCount < 100) {
+      if (this.incrementorCount < 100) {
         this.incrementors.push(window.setInterval(this.individualIncrementor, 1000));
       }
       if ((this.incrementorCount == 100)) {

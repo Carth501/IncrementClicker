@@ -14,9 +14,9 @@ export interface State {
 const _valueReducer = createReducer(
   initialState,
   on(valueActions.increment, (state) => ({ ...state, value: state.value + 1 })),
-  on(valueActions.purchase, (state) => ({
+  on(valueActions.purchase, (state, { cost }) => ({
     ...state,
-    value: state.value - 25,
+    value: state.value - cost,
     incrementors: state.incrementors + 1,
   })),
   on(valueActions.reset, (state) => ({ ...state, value: (state.value = 0) }))

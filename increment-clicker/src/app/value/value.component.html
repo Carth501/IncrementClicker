@@ -1,8 +1,4 @@
-<div>ByteDimes: {{ value | number: '1.0' }}</div>
+<div>ByteDimes: {{ value$ | async | number: '1.0' }}</div>
 <button (click)="increment()">Generate</button>
-<app-incrementors
-  [value]="value"
-  (incrementorActivate)="increment()"
-  (purchase)="decrement($event)"
-  (incrementorSale)="increment($event)"
-></app-incrementors>
+<app-incrementors [newValue]="value$ | async" (incrementorActivate)="increment()" (purchase)="decrement($event)"
+  (incrementorSale)="increment($event)"></app-incrementors>

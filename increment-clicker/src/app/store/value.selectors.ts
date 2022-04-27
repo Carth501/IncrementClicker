@@ -10,7 +10,9 @@ export interface AppState {
 
 export const selectFeature = (state: AppState) => state.feature;
 
-export const selectValue = createSelector(
-  selectFeature,
+const selectValue = (state: any) => state.hasOwnProperty('value') ? state.value : 0;
+
+export const getValue = createSelector(
+  selectValue,
   (state: FeatureState) => state.value
 );
